@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Encuesta Turística</title>
+</head>
+<body>
+  <h1>Encuesta de Recomendaciones Turísticas</h1>
+  <form action="/submit" method="post">
+    <label>Edad: <input type="number" name="edad" required></label><br><br>
+
+    <label>Género:
+      <select name="genero" required>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </label><br><br>
+
+    <label>Lugar de origen: <input type="text" name="origen" required></label><br><br>
+
+    <label>Intereses:<br>
+      <input type="checkbox" name="intereses" value="naturaleza"> Naturaleza<br>
+      <input type="checkbox" name="intereses" value="cultura"> Cultura<br>
+      <input type="checkbox" name="intereses" value="aventura"> Aventura<br>
+      <input type="checkbox" name="intereses" value="religión"> Religión<br>
+      <input type="checkbox" name="intereses" value="compras"> Compras<br>
+      <input type="checkbox" name="intereses" value="historia"> Historia<br>
+    </label><br>
+
+    <button type="submit">Ver recomendaciones</button>
+  </form>
+</body>
+</html>

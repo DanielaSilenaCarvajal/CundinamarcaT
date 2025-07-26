@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración del documento -->
+    <meta charset="UTF-8"> <!-- Codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Escalado para dispositivos móviles -->
+    <title>Cundinamarca Turística</title> <!-- Título de la pestaña -->
+
+    <!-- Iconos y estilos externos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='Inicio/CSS/Style.css') }}"> <!-- Hoja de estilos local -->
+</head>
+
+<body>
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header class="header">
+        <div class="container">
+            <h1>Cundinamarca Turística</h1>
+            <p>Descubre los tesoros naturales de nuestro departamento</p>
+        </div>
+    </header>
+
+    <!-- SECCIÓN DE CARRUSEL DE IMÁGENES -->
+    <section class="hero-carousel">
+        <div class="carousel-container">
+            <div class="carousel">
+                <!-- Primera imagen del carrusel -->
+                <div class="carousel-slide active">
+                    <img src="{{ url_for('static', filename='Inicio/Imagenes/Tequendama.png') }}" alt="Salto del Tequendama">
+                    <div class="slide-caption">
+                        <h2>Salto del Tequendama</h2>
+                        <p>Majestuosa cascada de 157 metros de altura</p>
+                    </div>
+                </div>
+                <!-- Segunda imagen -->
+                <div class="carousel-slide">
+                    <img src="{{ url_for('static', filename='Inicio/Imagenes/Humedal.jpg') }}" alt="Humedal Neuta">
+                    <div class="slide-caption">
+                        <h2>Humedal Neuta</h2>
+                        <p>Ecosistema único lleno de biodiversidad</p>
+                    </div>
+                </div>
+                <!-- Tercera imagen -->
+                <div class="carousel-slide">
+                    <img src="{{ url_for('static', filename='Inicio/Imagenes/Boquemonte.jpg') }}" alt="Boquemonte">
+                    <div class="slide-caption">
+                        <h2>Boquemonte</h2>
+                        <p>Reserva natural con impresionantes paisajes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de navegación del carrusel -->
+            <button class="carousel-btn prev" aria-label="Anterior imagen">&#10094;</button>
+            <button class="carousel-btn next" aria-label="Siguiente imagen">&#10095;</button>
+
+            <!-- Puntos indicadores del carrusel (se generan con JavaScript) -->
+            <div class="carousel-dots"></div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE LUGARES RECOMENDADOS -->
+    <section class="attractions">
+        <div class="container">
+            <h2 class="experience-form-title">Experiencia Personalizada</h2>
+            <p class="experience-form-subtitle">Lugares Recomendados para Ti</p>
+            <div class="attractions-grid">
+                {% if lugares %}
+                    {% for lugar in lugares %}
+                        <!-- Tarjeta de cada lugar -->
+                        <div class="attraction-card" data-href="../Salto/Salto.html">
+                            <!-- Imagen del lugar -->
+                            <div class="attraction-image">
+                                <img src="{{ url_for('static', filename='img_sites/' ~ lugar.imagen) }}" alt="{{ lugar.nombre_del_atractivo }}" loading="lazy">
+                            </div>
+                            <!-- Información textual del lugar -->
+                            <div class="attraction-info">
+                                <h2>{{ lugar.nombre_del_atractivo }}</h2>
+                                <p><strong>Tipo:</strong> {{ lugar.tipo_de_atractivo }}</p>
+                                <p><strong>Ubicación:</strong> {{ lugar.ubicaci_n }}</p>
+                                <p><strong>Descripción:</strong> {{ lugar.descripci_n_breve }}</p>
+                                <p><strong>Puntuación:</strong> {{ lugar.puntuaci_n_valoraci_n }}</p>
+                                {% if lugar.distancia_km %}
+                                    <p><strong>Distancia desde tu ubicación:</strong> {{ lugar.distancia_km }} km</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DEL MAPA INTERACTIVO -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Ubicación</h2>
+            <div class="map-wrapper">
+                <div class="map-responsive-container">
+                    <!-- Mapa embebido de Google Maps centrado en Cundinamarca -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1948200.1790397696!2d-75.2931406878271!3d4.783967163076193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28eb1616af2b%3A0x933cbcb5fad108ed!2sCundinamarca!5e1!3m2!1ses-419!2sco!4v1753502018233!5m2!1ses-419!2sco"
+                        allowfullscreen 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="responsive-iframe"
+                        title="Mapa interactivo de Cundinamarca"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Información de contacto -->
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-envelope"></i> info@cundinamarcaturistica.com</p>
+                    <p><i class="fas fa-phone"></i> +57 123 456 7890</p>
+                </div>
+                <!-- Redes sociales -->
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Derechos reservados -->
+            <div class="footer-bottom">
+                <p class="copyright">&copy; <span id="year"></span> Cundinamarca Turística. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para funcionalidades del carrusel y dinámicas -->
+    <script src="{{ url_for('static', filename='Inicio/Script/script.js') }}"></script>
+</body>
+</html>

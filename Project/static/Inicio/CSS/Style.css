@@ -1,0 +1,573 @@
+/* Variables y estilos base */
+:root {
+  --primary-color: #A00000;
+  --secondary-color: #800000;
+  --text-color: #333;
+  --light-bg: #f5f5f5;
+  --white: #fff;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--light-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  padding: 30px 0;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Carrusel - Versión mejorada */
+.hero-carousel {
+  margin: 30px 0;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  aspect-ratio: 16/9;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  background: rgba(160, 0, 0, 0.8);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  max-width: 400px;
+  backdrop-filter: blur(5px);
+  border: 2px solid white;
+}
+
+/* Flechas del carrusel - Versión corregida */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(160, 0, 0, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.carousel-btn:hover {
+  background: var(--primary-color);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+  left: 25px;
+}
+
+.carousel-btn.next {
+  right: 25px;
+}
+
+/* Puntos indicadores del carrusel */
+.carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* ===========================================
+   ESTILOS RESTAURADOS PARA NUESTROS ATRACTIVOS 
+   (Exactamente como estaban originalmente)
+   =========================================== */
+
+.attractions {
+  padding: 60px 0;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--primary-color);
+}
+
+.attractions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.attraction-card {
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.attraction-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.attraction-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.attraction-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.attraction-card:hover .attraction-image img {
+  transform: scale(1.05);
+}
+
+.attraction-info {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-link {
+  margin-top: auto;
+  align-self: flex-start;
+  color: var(--primary-color);
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: var(--transition);
+}
+
+.btn-link:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* =================================
+   ESTILOS NUEVOS PARA EL FORMULARIO
+   (Totalmente independientes)
+   ================================= */
+
+.experience-form-container {
+  padding: 60px 0;
+  background: white;
+}
+
+.experience-form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.experience-form-title {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.experience-form-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--primary-color);
+}
+
+.experience-form-subtitle {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 30px;
+}
+
+.experience-form {
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.experience-form-group {
+  margin-bottom: 20px;
+}
+
+.experience-form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.experience-form-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.experience-checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.experience-checkbox-item {
+  display: flex;
+  align-items: center;
+}
+
+.experience-checkbox-item input {
+  margin-right: 8px;
+}
+
+.experience-submit-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.experience-submit-btn:hover {
+  background: var(--secondary-color);
+}
+
+/* Mapa Responsive */
+.map-section {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.map-responsive-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  border: 3px solid var(--primary-color);
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Controles del mapa */
+.map-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.btn-map {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+.btn-map:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  padding: 50px 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.footer-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--white);
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: var(--white);
+  font-size: 1.5rem;
+  transition: var(--transition);
+}
+
+.social-icons a:hover {
+  transform: translateY(-5px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.copyright {
+  font-size: 0.9rem;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .map-responsive-container {
+    padding-top: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 0;
+  }
+  
+  .header h1 {
+    font-size: 2.4rem;
+  }
+  
+  .slide-caption {
+    bottom: 30px;
+    left: 30px;
+    max-width: 300px;
+    padding: 15px 20px;
+  }
+  
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .carousel-btn.prev {
+    left: 15px;
+  }
+  
+  .carousel-btn.next {
+    right: 15px;
+  }
+  
+  .attraction-image {
+    height: 180px;
+  }
+  
+  .map-responsive-container {
+    padding-top: 75%;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .slide-caption {
+    bottom: 20px;
+    left: 20px;
+    max-width: 200px;
+    padding: 10px 15px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .attraction-image {
+    height: 150px;
+  }
+  
+  .map-responsive-container {
+    padding-top: 100%;
+    border-width: 2px;
+  }
+  
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+}
+
+/* Estilos para los campos de coordenadas */
+.coordinates-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.coordinate-field {
+  margin-bottom: 0; /* Eliminamos el margen inferior porque lo maneja el contenedor */
+}
+
+.coordinate-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.coordinate-field input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.coordinate-field input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(160, 0, 0, 0.1);
+}
+
+.coordinate-field input::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+  .coordinates-group {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}

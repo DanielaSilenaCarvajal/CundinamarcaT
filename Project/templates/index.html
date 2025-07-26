@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración del documento y enlaces a estilos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cundinamarca Turística</title>
+    
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Enlace a la hoja de estilos personalizada -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='Inicio/CSS/Style.css') }}">
+</head>
+<body>
+
+    <!-- Encabezado principal de la página -->
+    <header class="header">
+        <div class="container">
+            <h1>Cundinamarca Turística</h1>
+            <p>Descubre los tesoros naturales de nuestro departamento</p>
+        </div>
+    </header>
+
+    <!-- Sección de carrusel de imágenes destacadas -->
+    <section class="hero-carousel">
+        <div class="carousel-container">
+            <div class="carousel">
+                
+                <!-- Slide 1 activo -->
+                <div class="carousel-slide active">
+                    <img src="{{ url_for('static', filename='Inicio/Imagenes/Tequendama.png') }}" alt="Salto del Tequendama">
+                    <div class="slide-caption">
+                        <h2>Salto del Tequendama</h2>
+                        <p>Majestuosa cascada de 157 metros de altura</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <img src="{{ url_for('static', filename='Inicio/Imagenes/Humedal.jpg') }}" alt="Humedal Neuta">
+                    <div class="slide-caption">
+                        <h2>Humedal Neuta</h2>
+                        <p>Ecosistema único lleno de biodiversidad</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <img src="{{ url_for('static', filename='Inicio/Imagenes/Boquemonte.jpg') }}" alt="Boquemonte">
+                    <div class="slide-caption">
+                        <h2>Boquemonte</h2>
+                        <p>Reserva natural con impresionantes paisajes</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de navegación del carrusel -->
+            <button class="carousel-btn prev" aria-label="Anterior imagen">&#10094;</button>
+            <button class="carousel-btn next" aria-label="Siguiente imagen">&#10095;</button>
+            
+            <!-- Contenedor para los puntos indicadores del carrusel -->
+            <div class="carousel-dots">
+                <!-- Los puntos se generan dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección del formulario para recoger datos del usuario -->
+    <section class="experience-form-container">
+        <div class="container">
+            <div class="experience-form-wrapper">
+                <h2 class="experience-form-title">Experiencia Personalizada</h2>
+                <p class="experience-form-subtitle">Te daremos las mejores recomendaciones, cuéntanos más de ti:</p>
+                
+                <!-- Formulario que se envía al servidor mediante POST -->
+                <form class="experience-form" action="/submit" method="post">
+                    
+                    <!-- Campo de edad -->
+                    <div class="experience-form-group">
+                        <label class="experience-form-label">Rango de Edad:</label>
+                        <select name="Rango de Edad" class="experience-form-input" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="Menos De 18 años">Menos De 18 años</option>
+                            <option value="Entre 18 y 25 años">Entre 18 y 25 años</option>
+                            <option value="Entre 25 y 35 años">Entre 25 y 35 años</option>
+                            <option value="Entre 35 y 45 años">Entre 35 y 45 años</option>
+                            <option value="Más de 45 años">Más de 45 años</option>
+                        </select>
+                    </div>
+
+                    <!-- Campo de género -->
+                    <div class="experience-form-group">
+                        <label class="experience-form-label">Género:</label>
+                        <select name="Género" class="experience-form-input" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <!-- Campo de región -->
+                    <div class="experience-form-group">
+                        <label class="experience-form-label">Región de Residencia:</label>
+                        <select name="Región de Residencia" class="experience-form-input" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="Amazonia">Amazonia</option>
+                            <option value="Andina">Andina</option>
+                            <option value="Caribe">Caribe</option>
+                            <option value="Insular">Insular</option>
+                            <option value="Orinoquia">Orinoquia</option>
+                            <option value="Pacífica">Pacífica</option>
+                            <option value="Visitante Internacional">Visitante Internacional</option>
+                        </select>
+                    </div>
+
+                    <!-- Campo de intereses (checkboxes múltiples) -->
+                    <div class="experience-form-group">
+                        <label class="experience-form-label">Intereses:</label>
+                        <div class="experience-checkbox-group">
+                            <!-- Cada opción es un checkbox -->
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Sitio Natural"> Sitio Natural</label>
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Patrimonio"> Patrimonio</label>
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Festividad/Evento"> Festividad/Evento</label>
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Espacio Público"> Espacio Público</label>
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Gastronomía"> Gastronomía</label>
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Monumento"> Monumento</label>
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Arquitectura"> Arquitectura</label>
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Deporte"> Deporte</label>
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Arte Público"> Arte Público</label>
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Sitio Histórico"> Sitio Histórico</label>
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Parque Recreativo"> Parque Recreativo</label>
+                            <label class="experience-checkbox-item"><input type="checkbox" name="Intereses" value="Infraestructura Comercial"> Infraestructura Comercial</label>
+
+                            <!-- Campos de coordenadas -->
+                            <div class="form-group">
+                                <div class="coordinates-group">
+                                    <div class="coordinate-field">
+                                        <label for="Latitud">Latitud:</label>
+                                        <input type="text" id="Latitud" name="Latitud" placeholder="Ej: 4.6" pattern="^-?\d+(\.\d+)?$" inputmode="decimal" title="Ingresa una coordenada válida" required>
+                                    </div>
+                                    <div class="coordinate-field">
+                                        <label for="Longitud">Longitud:</label>
+                                        <input type="text" id="Longitud" name="Longitud" placeholder="Ej: -74.1" pattern="^-?\d+(\.\d+)?$" inputmode="decimal" title="Ingresa una coordenada válida" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón de envío del formulario -->
+                    <button type="submit" class="experience-submit-btn">Ver recomendaciones</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de mapa interactivo embebido de Google Maps -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Ubicación</h2>
+            <div class="map-wrapper">
+                <div class="map-responsive-container">
+                    <!-- Iframe con mapa de Cundinamarca -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1948200.1790397696!2d-75.2931406878271!3d4.783967163076193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28eb1616af2b%3A0x933cbcb5fad108ed!2sCundinamarca!5e1!3m2!1ses-419!2sco!4v1753502018233!5m2!1ses-419!2sco" 
+                    allowfullscreen loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade" 
+                    class="responsive-iframe" 
+                    title="Mapa interactivo de Cundinamarca"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página con contacto y redes sociales -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Información de contacto -->
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-envelope"></i> info@cundinamarcaturistica.com</p>
+                    <p><i class="fas fa-phone"></i> +57 123 456 7890</p>
+                </div>
+
+                <!-- Redes sociales -->
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Derechos reservados -->
+            <div class="footer-bottom">
+                <p class="copyright">
+                    &copy; <span id="year"></span> Cundinamarca Turística. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JS para funcionalidades dinámicas como el carrusel -->
+    <script src="{{ url_for('static', filename='Inicio/Script/script.js') }}"></script>
+</body>
+</html>
